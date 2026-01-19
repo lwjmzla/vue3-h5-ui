@@ -1,0 +1,101 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &list-view{
+    @include scroller;
+    &--inner{
+      position: relative;
+      backface-visibility: hidden;
+      perspective: 1000;
+      &.active .#{$--css-prefix}list-view--refresh span:before{
+        content:attr(data-refresh);
+      }
+      &.active{
+        .#{$--css-prefix}list-view{
+          &--refresh{
+            @include var-color();
+            span:before{
+              content:attr(data-refresh);
+            }
+          }
+          &--icon{
+            transform: rotate(180deg);
+            @include var-background-color();
+            top:0.06rem;
+            &:before{
+              @include var-border-color($--color-primary, 'border-top-color');
+            }
+          }
+        }
+      }
+      &.loading{
+        .#{$--css-prefix}list-view{
+          &--refresh{
+            span:before{
+              content:attr(data-loading);
+            }
+          }
+          &--icon{
+            display:none
+          }
+          &--spinner{
+            display: inline-block
+          }
+        }
+      }
+    }
+    &--refresh{
+      @include var-color($--color-light);
+      line-height:0.9rem;
+      margin-top:-0.9rem;
+      text-align:center;
+      .#{$--css-prefix}list-view--spinner{
+        display: none
+      }
+      span:before{
+        content:attr(data-pulldown)
+      }
+    }
+    &--loading{
+      text-align:center;
+      @include var-height($--box-size-height-default, 'line-height');
+      @include var-color($--color-light);
+      &.is-end{
+        &:before,&:after{
+          content:'';
+          display:inline-block;
+          border-top: 1px solid;
+          opacity: 0.5;
+          @include var-border-color($--color-light);
+          width:0.5rem;
+          font-size: 0;
+          height: 1px;
+          margin: 0 5px;
+          vertical-align: middle;
+          margin-top: -1px;
+        }
+      }
+    }
+    &--spinner{
+      margin-right:0.08rem;
+    }
+    &--icon{
+      display:inline-block;
+      width:0.14rem;
+      height:0.16rem;
+      background:rgba(153,153,153,.6);
+      position:relative;
+      top:-0.08rem;
+      margin-right:0.1rem;
+      &:before{
+        content:'';
+        left:50%;
+        top:100%;
+        border:0.16rem solid transparent;
+        @include var-border-color($--color-light, 'border-top-color');
+        position:absolute;
+        margin-left:-0.16rem;
+      }
+    }
+  }
+}

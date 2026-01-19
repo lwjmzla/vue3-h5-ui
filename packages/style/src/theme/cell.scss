@@ -1,0 +1,92 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &cell{
+    // padding: 0 0.2rem;
+    // margin:0.25rem 0;
+    display: block;
+    color:inherit;
+    text-decoration: none;
+    &--menu{
+      padding: 0.12rem 0.2rem;
+      .vx-cell--inner{
+        min-height: 0.68rem;
+      }
+    }
+    &--info{
+      padding: 0 0.2rem;
+      margin: 0.3rem 0;
+      &:first-child{
+        padding-top:0.3rem;
+        margin-top:0;
+      }
+      &:last-child{
+        padding-bottom:0.3rem;
+        margin-bottom:0;
+      }
+      .vx-cell--value{
+        text-align: right;
+        max-width: 60vw;
+      }
+      .vx-cell--default-slot{
+        margin-top:0.15rem;
+      }
+    }
+    &.is-divider{
+      @include divider;
+    }
+    &--inner{
+      position: relative;
+      @include flexbox('center');
+    }
+    &--hd{
+      margin-right:0.1rem;
+    }
+    &--bd{
+      text-align:left;
+      margin-right:5px;
+      @include flexbox-item;
+    }
+    &--ft{
+      position:relative;
+      color:rgba($--color-black, 0.75);
+      .vx-select{
+        margin-right: -0.15rem;
+      }
+    }
+    .vx-cell--arrow{
+      margin-left:5px;
+    }
+    &--value{
+      max-width: 50vw;
+      input{
+        border:0;
+        text-align:right;
+        font-size:inherit;
+        outline:none;
+        font-family:inherit;
+        color:inherit;
+      }
+      .vx-select,.vx-cascader{
+        height:0.68rem;
+      }
+    }
+    &:first-child{
+      background-image:none;
+    }
+  }
+  &group{
+    &.is-heading{
+      .vx-cell--info{
+        padding-left:0;
+        padding-right:0;
+        &:first-child{
+          padding-top:0;
+        }
+        &:last-child{
+          padding-bottom:0;
+        }
+      }
+    }
+  }
+}

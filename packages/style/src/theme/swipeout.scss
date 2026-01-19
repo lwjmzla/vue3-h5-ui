@@ -1,0 +1,37 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &swipeout{
+    @include lineClamp;
+    position:relative;
+    touch-action: pan-y;
+    @include divider;
+    background-color:#fff;
+    &:first-child{
+      background-image:none;
+    }
+    &::-webkit-scrollbar{
+      display:none;
+    }
+    &--inner{
+      transition:transform 0.2s ease-out 0s;
+      backface-visibility: hidden;
+      perspective: 1000;
+      display:flex;
+    }
+    &--content{
+      min-width: 100vw;
+    }
+    &--action{
+      >button{
+        @include button;
+        height:100%;
+        min-width:1rem;
+      }
+    }
+    .vx-list-item{
+      margin:0;
+      background-color:transparent;
+    }
+  }
+}

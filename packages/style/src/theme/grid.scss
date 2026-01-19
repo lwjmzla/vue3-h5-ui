@@ -1,0 +1,39 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &grid{
+    overflow:hidden;
+    &--inner{
+      width: calc(100% + 1px);
+      &:after{
+        display:table;
+        font-size:0;
+        content:'';
+        clear: both;
+      }
+    }
+    &--item{
+      float:left;
+      text-align:center;
+      position:relative;
+      box-sizing:border-box;
+      background-clip: content-box;
+      border-right:1px solid transparent;
+      border-bottom:1px solid transparent;
+      background-color:#fff;
+      &-inner{
+        padding:0.2rem;
+      }
+      &.is-divider{
+        @include divider($--color-divider, true);
+        //background-position: right;
+        border-right:0;
+        border-bottom:0;
+        .vx-grid--item-inner{
+          @include divider();
+          background-position:bottom;
+        }
+      }
+    }
+  }
+}

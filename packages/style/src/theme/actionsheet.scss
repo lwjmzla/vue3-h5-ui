@@ -1,0 +1,68 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &actionsheet{
+    &--inner{
+      background:#fff;
+      max-height: 80vh;
+      text-align:center;
+      @include scroller;
+    }
+    &--title{
+      line-height:1rem;
+      position:relative;
+      background-position: bottom;
+      @include var-font-size($--font-size-large);
+      @include var-color($--color-assist);
+    }
+    &--cancel{
+      padding: 0.3rem 0;
+      border-top:0.2rem solid #eee;
+      @include var-color($--color-assist);
+    }
+    &--item{
+      padding:0.3rem 0;
+      position:relative;
+      border-left: 0.1rem solid transparent;
+      border-right: 0.1rem solid transparent;
+      user-select:none;
+      @include lineClamp;
+      @include active;
+      @include divider;
+      &.is-active{
+        @include var-color();
+      }
+      &.is-disabled{
+        pointer-events: none;
+        .vx-actionsheet--item-text{
+          @include _disabled;
+        }
+      }
+      &-text{
+        display:inline;
+      }
+    }
+    &--menu {
+      .vx-popup--body{
+        max-width:10rem;
+        width:60%;
+      }
+      .#{$--css-prefix}actionsheet{
+        &--inner{
+          border-radius:0.06rem;
+        }
+        &--item{
+          border-left:0;
+          border-right:0;
+        }
+      }
+    }
+    &.is-not-title{
+      .#{$--css-prefix}actionsheet{
+        &--item:first-child{
+          background-image:none;
+        }
+      }
+    }
+  }
+}

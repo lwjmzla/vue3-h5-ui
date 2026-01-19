@@ -1,0 +1,73 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &form{
+    background:#fff;
+    .el-form-item{
+      position:relative;
+      background:#fff;
+      @include flexbox('center');
+      min-height: 0.9rem;
+      margin-bottom:0.4rem;
+      &.is-block{
+        display:block;
+      }
+      &.is-divider{
+        &:after{
+          content:'';
+          height:1px;
+          position: absolute;
+          bottom:-1px;
+          width:100%;
+          @include divider;
+        }
+        &.is-error{
+          &:after{
+            @include divider($--color-error);
+          }
+        }
+      }
+      &__content{
+        -ms-flex: 1;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        flex: 1;
+        min-width:0;
+      }
+      &__error{
+        @include var-color($--color-error);
+        @include var-font-size($--font-size-small);
+        padding-bottom:0.15rem;
+        position: absolute;
+        z-index:1;
+        top: 100%;
+        margin-top: 2px;
+      }
+      &__label{
+        padding:0 0.15rem;
+        min-width:1.5rem;
+        text-align: left;
+      }
+      &.is-required{
+        .el-form-item__label{
+          &:before{
+            @include var-color($--color-error);
+            content:'*'
+          }
+        }
+      }
+      &.is-error{
+        .vx-input-wrapper,.vx-textarea-wrapper{
+          &:before{
+            @include divider($--color-error);
+          }
+        }
+      }
+      &--small{
+        min-height:0.68rem;
+      }
+    }
+  }
+}

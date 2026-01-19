@@ -1,0 +1,29 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &daterange-picker{
+    &--wrapper{
+      text-align:center;
+      .#{$--css-prefix}popup--inner{
+        max-height:100%;
+      }
+    }
+    &--cancel,&--clearable, &--confirm{
+      @include button;
+      @include var-height();
+      width: 1.5rem;
+      @include var-color($--color-assist);
+    }
+    &--confirm{
+      @include var-color();
+    }
+    &--footer{
+      position:relative;
+      @include divider;
+      @include flexbox;
+      >div{
+        @include flexbox-item;
+      }
+    }
+  }
+}

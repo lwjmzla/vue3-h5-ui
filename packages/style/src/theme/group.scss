@@ -1,0 +1,40 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &group{
+    margin: 0.25rem 0;
+    padding-top:1px;
+    padding-bottom:1px;
+    &--title{
+      padding:0.1rem 0.15rem;
+      line-height:1;
+      @include var-color($--color-assist);
+      @include lineClamp();
+    }
+    &--inner{
+      position:relative;
+      background:#fff;
+      &:empty{
+        display:none;
+      }
+    }
+    &--placeholder{
+      text-align:center;
+      @include var-color($--color-light);
+      padding:0.2rem 0;
+    }
+    &.is-prepend,&.is-append,&.is-heading{
+      background:#fff;
+    }
+    &.is-heading{
+      .vx-group{
+        &--inner{
+          padding:0.25rem 0.2rem 0.25rem 0.2rem;
+        }
+      }
+    }
+    .vx-heading+.vx-group--inner{
+      padding-top:0;
+    }
+  }
+}

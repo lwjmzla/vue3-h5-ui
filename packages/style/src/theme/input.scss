@@ -1,0 +1,138 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &input{
+    &--size{
+      &-default{
+        @include var-height();
+      }
+      &-small{
+        @include var-height($--box-size-height-small);
+      }
+    }
+    &--wrapper{
+      position:relative;
+      display:block;
+      background:#fff;
+      box-sizing:border-box;
+      @include disabled;
+      .vx-arrow{
+        margin-left:6px;
+        margin-right:0.28rem;
+        margin-top:-0.1rem;
+        transition: transform 0.18s ease 0s;
+      }
+      .vx-input--area{
+        height:100%;
+        @include flexbox-item;
+      }
+      .vx-input--control{
+        height:100%;
+        padding:0 0.2rem;
+        box-sizing:border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      input.vx-input--control{
+        vertical-align: middle;
+        background: transparent;
+        outline: none;
+        text-align: inherit;
+        font-size: inherit;
+        border:0;
+        width:100%;
+      }
+      &.is-border{
+        &:before{
+          @include divider;
+          z-index:1;
+          position:absolute;
+          content:'';
+          height:1px;
+          width:100%;
+          left:0;
+          bottom:-1px;
+          background-color: transparent;
+        }
+        &:after{
+          @include divider($--color-primary);
+          width:0;
+          position:absolute;
+          content:'';
+          height:1px;
+          transition:width 0.4s $--ease-in-out;
+          z-index:2;
+          left:0;
+          bottom:-1px;
+          background-color: transparent;
+        }
+      }
+      &.is-focus{
+        &:after{
+          width:100%;
+        }
+        .vx-arrow{
+          transform:rotate(-135deg)!important;
+          margin-top:0.1rem;
+        }
+      }
+      &.is-custom{
+        .vx-input--area{
+          height:auto;
+        }
+      }
+    }
+    &--inner{
+      height:100%;
+      @include flexbox('center');
+    }
+    
+    &--clearable{
+      &-button{
+        @include button;
+        width:0.8rem;
+        height:100%;
+      }
+      &-icon{
+        position:relative;
+        transform: rotate(45deg);
+        display: inline-table;
+        width:0.4rem;
+        height:0.4rem;
+        vertical-align: middle;
+        &:before{
+          content: '';
+          height:1px;
+          position:absolute;
+          width:100%;
+          background:rgba(153,153,153,.6);
+          left:50%;
+          top:50%;
+          transform:translateX(-50%);
+          margin-top:-1px;
+        }
+        &:after{
+          content: '';
+          width:1px;
+          position:absolute;
+          height:100%;
+          background:rgba(153,153,153,.6);
+          left:50%;
+          top:50%;
+          transform:translateY(-50%);
+          margin-left:-1px;
+        }
+      }
+      .#{$--css-prefix}input--clearable-button{
+        display:block;
+      }
+    }
+  }
+}
+.input-clearable-fade-enter-active, .input-clearable-fade-leave-active {
+  transition: opacity $--transition-time;
+}
+.input-clearable-fade-enter {
+  opacity: 0
+}

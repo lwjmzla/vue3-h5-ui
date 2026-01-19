@@ -1,0 +1,31 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &spinner{
+    position:absolute;
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+    animation: loading 0.6s infinite linear;
+    border:0.04rem solid #eee;
+    @include var-border-color($--color-primary, 'border-top-color');
+    border-radius:50%;
+    box-sizing:border-box;
+    &--wrapper{
+      position:relative;
+      display: inline-table;
+      vertical-align: middle;
+      height:0.4rem;
+      width:0.4rem;
+    }
+  }
+}
+@keyframes loading {
+  0% {
+    transform:rotate(0deg)
+  }
+  100% {
+    transform:rotate(360deg)
+  }
+}

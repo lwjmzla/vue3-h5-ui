@@ -1,0 +1,22 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &message{
+    padding:0.1rem 0.2rem;
+    line-height:1.75;
+    background-color: #f4f4f5;
+    color: #909399;
+    &--warning{
+      color: #e6a23c;
+      background-color: #fdf6ec;
+    }
+    &--danger,&--error{
+      color: #f56c6c;
+      background-color: #fef0f0;
+    }
+    &--success{
+      color: #67c23a;
+      background-color: #f0f9eb;
+    }
+  }
+}

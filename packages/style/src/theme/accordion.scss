@@ -1,0 +1,52 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &accordion{
+    margin:0.16rem 0;
+    background:#fff;
+    &--item{
+      position:relative;
+      &-hd{
+        @include var-font-size($--font-size-large);
+        @include var-height($--box-size-height-default, 'line-height');
+        padding:0 0.16rem;
+        position:relative;
+        @include divider;
+        background-position:bottom;
+        .vx-arrow{
+          position:absolute;
+          top:50%;
+          right:0.18rem;
+          margin-top:-0.2rem;
+        }
+      }
+      &-title{
+        margin-right:0.5rem;
+        @include lineClamp;
+      }
+      &-bd{
+        height:0;
+        overflow:hidden;
+      }
+      &-content{
+        padding:0.16rem;
+      }
+      &.is-open{
+        @include divider;
+        background-position:bottom;
+        .vx-accordion--item-hd{
+          .vx-arrow{
+            transform: rotate(-135deg)!important;
+            margin-top:-0.04rem;
+          }
+        }
+      }
+    }
+  }
+}
+.accordion-slide-enter-active, .accordion-slide-leave-active{
+  transition: height 0.3s ease 0s;
+}
+.accordion-slide-enter-from, .accordion-slide-leave-active {
+  height: 0!important;
+}

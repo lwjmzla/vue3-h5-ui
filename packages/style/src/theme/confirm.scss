@@ -1,0 +1,97 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &confirm{
+    position:fixed;
+    left:0;
+    top:0;
+    text-align:center;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index: 1000;
+    display:none;
+    user-select: none;
+    // pointer-events: none;
+    &.is-show{
+      display:flex;
+    }
+    &--inner{
+      margin:auto;
+      position:relative;
+      z-index:1;
+      text-align:center;
+      background:#fff;
+      border-radius:0.06rem;
+      width:90vw;
+      max-width:8rem;
+      box-shadow: 0 0.02rem 0.1rem rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    &--title{
+      margin:0.36rem;
+      @include var-font-size($--font-size-large);
+      @include lineClamp;
+    }
+    &--body{
+      max-height: 60vh;
+      margin:0.36rem;
+      position:relative;
+      @include scroller;
+    }
+    &--footer{
+      position:relative;
+      @include divider;
+      overflow:hidden;
+      @include flexbox;
+      button, a{
+        @include button;
+        @include active;
+        @include var-height();
+        @include flexbox-item;
+        user-select:none;
+        position:relative;
+        font-size:inherit;
+        line-height:100%;
+        @include var-color($--color-assist);
+        &+button,&+a{
+          @include divider($--color-divider, true);
+        }
+        &.is-cancel-light{
+          @include var-color();
+        }
+        &:last-child{
+          @include var-color();
+        }
+        &[disabled]{
+          @include _disabled();
+        }
+      }
+      a{
+        @include var-height($--box-size-height-default, 'line-height');
+      }
+    }
+    &--table{
+      width:100%;
+      display:table;
+      min-height:1rem;
+    }
+    &--cell{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+.vx--confirm-scale-enter-active, .vx--confirm-scale-leave-active {
+  transition: transform $--transition-time ease 0s,opacity $--transition-time ease 0s;
+}
+.vx--confirm-scale-enter-from{
+  opacity:0;
+  transform:translate3d(0,0,0) scale(1.3);
+  pointer-events: none;
+}
+.vx--confirm-scale-leave-active{
+  opacity:0;
+  transform:translate3d(0,0,0) scale(0.9);
+  pointer-events: none
+}

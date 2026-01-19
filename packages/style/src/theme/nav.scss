@@ -1,0 +1,142 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &nav{
+    background:#fff;
+    position:relative;
+    z-index:10;
+    &--inner{
+      position:relative;
+      z-index:10;
+      .vx-nav--layout{
+        @include var-height();
+        >.vx-flexbox--item{
+          transition:all 0.2s ease 0s;
+        }
+      }
+    }
+    &--layout{
+      @include flexbox('center');
+    }
+    &--default{
+      &:after{
+        position:absolute;
+        content: '';
+        left:0;
+        bottom:-1px;
+        width:100%;
+        height:1px;
+        @include divider;
+        z-index:1000;
+        background-color:transparent;
+      }
+    }
+    &--primary{
+      .vx-nav--inner{
+        color:#fff;
+        @include var-background-color();
+      }
+    }
+    &--button{
+      color:inherit;
+      height:inherit;
+      min-width: $--box-size-height-default;
+      text-align: center;
+      @include button;
+      @include active;
+    }
+    &--back{
+      position:relative;
+      z-index:1;
+      padding:0 0.25rem;
+      margin-right:-0.16rem;
+      &:active{
+        background:transparent!important;
+      }
+      .vx-arrow{
+        margin-right: -0.16rem;
+        vertical-align: baseline!important;
+        margin-top: 0.05rem;
+      }
+      span{
+        margin-left:0.1rem;
+        font-size:0.32rem;
+      }
+    }
+    &--title{
+      @include var-font-size($--font-size-xl);
+      @include lineClamp;
+      @include flexbox-item;
+      &-center{
+        text-align:center;
+      }
+      &-slot{
+        @include flexbox-item;
+      }
+    }
+    &.is-back-text{
+      .vx-nav-back{
+        margin-right:0;
+      }
+    }
+    &.is-title-center{
+      .vx-nav--back{
+        margin-right:0;
+      }
+      .vx-nav--title{
+        text-align:center;
+      }
+      .vx-nav--button{
+        width: $--box-size-height-default;
+      }
+      div.vx-nav--button:active{
+        background:transparent;
+      }
+    }
+    &--search{
+      display:flex;
+      transition:all 0.2s ease 0s;
+      @include var-height();
+      &-inner{
+        margin:0 0.2rem 0.2rem 0.2rem;
+        width: 100%;
+      }
+      &-input{
+        outline:none;
+        height:0.7rem;
+        width:100%;
+        box-sizing:border-box;
+        padding:0 0.2rem;
+        border:1px solid;
+        @include var-border-color($--color-border);
+        border-radius:0.1rem;
+        font-size: inherit;
+      }
+    }
+    &.is-search-collapse{
+      .vx-nav{
+        &--search{
+          position:relative;
+          z-index:10;
+          &-inner{
+            margin:auto;
+          }
+        }
+        &--layout{
+          >.vx-flexbox--item{
+            opacity:0;
+          }
+        }
+      }
+    }
+    &.vx-nav--primary{
+      .vx-nav--search-input{
+        border:0;
+      }
+    }
+    &--default-slot{
+      background:#fff;
+      box-shadow:0 0 0.15rem rgba(0,0,0,0.1);
+    }
+  }
+}

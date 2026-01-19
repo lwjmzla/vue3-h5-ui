@@ -1,0 +1,70 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &search{
+    position:relative;
+    background:#ddd;
+    padding:1px;
+    @include flexbox;
+    .#{$--css-prefix}input--wrapper{
+      height:0.7rem;
+      margin: 4px;
+      border-radius:1rem;
+      &:before,&:after{
+        display:none;
+      }
+    }
+    &--input{
+      @include flexbox-item;
+    }
+    input{
+      padding-left:0.3rem;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input::-webkit-search-cancel-button{
+      display:none;
+    }
+    input::search-cancel-button{
+      display:none;
+    }
+    &--cancel{
+      @include button;
+      width: 0.6rem;
+      .vx-arrow{
+        margin-right: -0.2rem;
+      }
+    }
+    &--button{
+      @include button;
+      color:#fff;
+    }
+    &--fixed{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #fff;
+      width: 100%;
+      flex-direction: column;
+      z-index: 100;
+      .#{$--css-prefix}search{
+        @include var-background-color();
+      }
+    }
+    &--container{
+      .keywords{
+        padding:0.2rem;
+        .keyword{
+          display:inline-block;
+          border:1px solid #eee;
+          border-radius:0.6rem;
+          vertical-align: middle;
+          padding:0.12rem 0.3rem;
+          margin:0.1rem;
+          @include active;
+        }
+      }
+    }
+  }
+}

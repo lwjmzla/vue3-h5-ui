@@ -1,0 +1,33 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &badge{
+    display: inline-block;
+    @include var-background-color($--color-error);
+    color: #fff;
+    font-size: 0.24rem;
+    height: 0.32rem;
+    line-height: 0.32rem;
+    border-radius: 0.18rem;
+    padding: 0 0.1rem;
+    background-clip: padding-box;
+    vertical-align: middle;
+    text-align:center;
+    &--dot{
+      height: auto;
+      padding: 0.08rem;
+      position:relative;
+      top:-0.02rem;
+    }
+    .badge-ellipsis{
+      margin:0 0.1rem;
+      border-radius:50%;
+      background:#fff;
+      display:inline-block;
+      height:0.08rem;
+      width:0.08rem;
+      vertical-align: middle;
+      box-shadow: -0.1rem 0px 0px 0px #fff,0.1rem 0px 0px 0px #fff
+    }
+  }
+}

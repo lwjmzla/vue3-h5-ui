@@ -1,0 +1,55 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+$radius: 0.1rem;
+.#{$--css-prefix}{
+  &button-tab{
+    text-align:center;
+    position:relative;
+    user-select: none;
+    line-height:0.78rem;
+    @include flexbox;
+    border:1px solid $--color-primary;
+    border-radius:0.8rem;
+    overflow: hidden;
+    &--size{
+      &-small{
+        @include var-height($--box-size-height-small, 'line-height');
+        margin: auto;
+        @include var-font-size();
+      }
+    }
+    &--item{
+      position:relative;
+      z-index:1;
+      @include lineClamp;
+      @include flexbox-item;
+      &.is-active{
+        @include var-background-color();
+        color:#fff;
+        &:before{
+          display:none;
+        }
+      }
+      &:first-child{
+        border-top-left-radius:$radius;
+        border-bottom-left-radius:$radius;
+        &:before{
+          display:none;
+        }
+      }
+      &:last-child{
+        border-top-right-radius:$radius;
+        border-bottom-right-radius:$radius;
+      }
+      &:before{
+        content:'';
+        border-left:1px solid $--color-primary;
+        // transform:scaleX(0.5);
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+      }
+    }
+  }
+}

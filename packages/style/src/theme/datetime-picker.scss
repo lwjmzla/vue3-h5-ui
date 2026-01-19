@@ -1,0 +1,33 @@
+@import 'common/variable.scss';
+@import 'common/mixins.scss';
+.#{$--css-prefix}{
+  &datetime-picker{
+    @include flexbox;
+    &--wrapper{
+      background:#fff;
+    }
+    &--item{
+      @include flexbox-item;
+    }
+    &--header{
+      position:relative;
+      @include divider;
+      background-position:bottom;
+      @include flexbox;
+    }
+    &--today{
+      @include var-height($--box-size-height-default, 'line-height');
+      @include lineClamp;
+      @include flexbox-item;
+    }
+    &--cancel,&--confirm,&--today{
+      @include button;
+      @include var-height();
+      width: 1.5rem;
+      @include var-color($--color-assist);
+    }
+    &--confirm{
+      @include var-color();
+    }
+  }
+}
