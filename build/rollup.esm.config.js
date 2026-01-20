@@ -1,0 +1,19 @@
+import basicConfig, { name, file } from './rollup.config'
+import vue from 'rollup-plugin-vue'
+
+//basicConfig.plugins.push(vue({ css: false }))
+
+export default {
+  ...basicConfig,
+  output: {
+    name,
+    file: file('esm'),
+    format: 'esm',
+    globals: {
+      "vue": "Vue",
+      'element-ui': 'ELEMENT',
+      'lodash-es': '_'
+    },
+    inlineDynamicImports: true, // 必须开启
+  }
+}

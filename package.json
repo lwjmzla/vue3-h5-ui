@@ -3,13 +3,19 @@
   "version": "3.0.1-alpha",
   "description": "A Component Library for Vue.js",
   "author": "xxx",
-  "main": "lib/index.js",
+  "main": "lib/vx-ui.umd.js",
+  "module": "lib/vx-ui.esm.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build:theme": "gulp build --gulpfile packages/style/gulpfile.js",
-    "build:component": "vue-cli-service build --mode component"
+    "build:component": "vue-cli-service build --mode component",
+    "clean": "rimraf lib",
+    "build:com": "npm run clean & npm run build:esm & npm run build:umd",
+    "build:esm": "rollup --config ./build/rollup.esm.config.js",
+    "build:umd": "rollup --config ./build/rollup.umd.config.js"
   },
   "files": [
     "lib"
@@ -26,17 +32,33 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.0.4",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
+    "vue": "^3.2.31",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/plugin-transform-runtime": "^7.28.5",
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-typescript": "^6.1.0",
+    "@rollup/plugin-url": "^8.0.2",
+    "@sixian/css-url": "^1.0.3",
+    "@vue/babel-plugin-jsx": "^2.0.1",
     "@vue/cli-plugin-babel": "~5.0.0-beta.1",
     "@vue/cli-plugin-eslint": "~5.0.0-beta.1",
     "@vue/cli-plugin-router": "~5.0.0-beta.1",
     "@vue/cli-service": "~5.0.0-beta.1",
     "@vue/compiler-sfc": "^3.0.4",
+    "autoprefixer": "^8.0.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
     "element-plus": "^1.0.2-beta.53",
     "eslint": "^7.20.0",
     "eslint-plugin-vue": "^7.2.0",
@@ -46,13 +68,25 @@
     "gulp-sass": "^5.1.0",
     "markdown-it": "^12.0.6",
     "photoswipe": "^4.1.2",
+    "postcss": "^8.2.2",
+    "postcss-loader": "^7.3.0",
     "progress-bar-webpack-plugin": "^2.1.0",
     "qrcodejs2": "^0.0.2",
+    "rollup": "^2.28.2",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-css-only": "^2.1.0",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.13",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "rollup-plugin-vue": "^6",
     "sass": "^1.77.8",
     "sass-loader": "^12.0.0",
     "sass-resources-loader": "^2.2.3",
     "swiper": "^6.5.1",
     "vue-color": "^2.7.0",
     "vue-markdown-loader": "^2.4.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
   }
 }
