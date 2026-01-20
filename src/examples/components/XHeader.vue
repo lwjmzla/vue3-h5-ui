@@ -1,15 +1,15 @@
 <template>
   <header>
     <div class="header-inner">
-      <flexbox align="center">
-        <flexbox-item>
+      <vx-flexbox align="center">
+        <vx-flexbox-item>
           <img :src="'/images/logo.png'"/>
           <h2>Vx UI</h2>
-        </flexbox-item>
+        </vx-flexbox-item>
         <a target="_blank" href="https://github.com/yunfeihuang/vx-ui" style="margin-right: 165px;">
           <img style="width:24px;height:24px" :src="'/images/github.png'"/> github
         </a>
-      </flexbox>
+      </vx-flexbox>
     </div>
   </header>
 </template>

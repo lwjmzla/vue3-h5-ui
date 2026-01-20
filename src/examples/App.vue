@@ -6,7 +6,7 @@
       <div class="markdown-body">
         <router-view></router-view>
       </div>
-      <div class="example-iphone">
+      <!-- <div class="example-iphone">
         <div class="example-iphone-iframe">
           <iframe :src="toDemo" frameborder="0"></iframe>
           <div class="example-iphone-home" @click="handleHome"></div>
@@ -19,6 +19,19 @@
           <div class="example-iphone-code-item">
             <img :src="'/images/pay-code.png'" style="vertical-align: inherit;" :height="100" :width="100" />
             打赏赞助
+          </div>
+        </div>
+      </div> -->
+      <div class="example-iphone">
+        <div class="example-iphone-iframe">
+          <div class="simulator-content">
+            <iframe :src="toDemo" frameborder="0" class="simulator-iframe"></iframe>
+          </div>
+        </div>
+        <div class="example-iphone-code">
+          <div class="example-iphone-code-item">
+            <qrcode :text="toDemo" :height="100" :width="100" />
+            示例预览
           </div>
         </div>
       </div>
@@ -110,10 +123,9 @@ export default {
     &-iphone{
       background:#fff;
       position:fixed;
-      top:70px;
-      right:30px;
+      top:0px;
+      right:0px;
       z-index:1;
-      width:340px;
       text-align:center;
       &-home{
         position:absolute;
@@ -128,35 +140,63 @@ export default {
         z-index:100;
       }
       &-iframe{
-        box-shadow:0 0 0 1px $color-iphone-border;
-        border-radius:40px;
-        padding:40px 10px 60px 10px;
-        position:relative;
-        &:before{
-          content:'';
-          position:absolute;
-          left:50%;
-          border:1px solid $color-iphone-border;
-          width:50px;
-          height:6px;
-          top:21px;
-          border-radius:3px;
-          margin-left:-25px;
-          margin-top:-4px;
+        // iframe{
+        //   border:1px solid $color-iphone-border;
+        //   width:320px;
+        //   height:480px;
+        // }
+        // position: -webkit-sticky;
+        // position: sticky;
+        // top: 0px;
+        // z-index: 9;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        flex-shrink: 0;
+        width: 390.26px;
+        height: 790px;
+        border-radius: 20px;
+        background-color: #fff;
+        transform: scale(0.85);
+        box-sizing: border-box;
+        background-image: url('~@/assets/phone-wrap.png');
+        //background-image: url('https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2023/10/own_mike_255356ffde6cc5c8c1.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+        padding: 58px 14px 32px;
+
+        .simulator-content {
+          position: relative;
+          flex: 1;
+          border-radius: 5px;
+          background-color: #FFFFFF;
+          overflow: hidden;
+          border-bottom-left-radius: 30px;
+          border-bottom-right-radius: 30px;
+
+          .simulator-iframe {
+            margin: -2px 0;
+            width: 100%;
+            height: calc(100% + 4px);
+            border: none;
+          }
         }
-        iframe{
-          border:1px solid $color-iphone-border;
-          width:320px;
-          height:480px;
+
+        &.simulator-fixed {
+          position: fixed;
+        }
+
+        @media (max-width: 1300px) {
+          display: none;
         }
       }
       &-code{
-        position:fixed;
-        top:662px;
-        text-align:center;
-        width:340px;
+        margin-top: -40px;
+        text-align: center;
         &-item{
-          width:100px;
+          width:140px;
           display:inline-block;
         }
       }
