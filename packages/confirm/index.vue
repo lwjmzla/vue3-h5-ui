@@ -100,7 +100,7 @@ export default {
     const handleLeave = () => {
       instance.goBack()
       emit('after-close')
-      el.value.classList.remove('is-show')
+      el.value?.classList.remove('is-show')
     }
     onMounted(() => {
       props.open && handleBeforeEnter()

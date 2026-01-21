@@ -56,6 +56,7 @@ import {ElForm, ElFormItem} from './form'
 import Cascader from './cascader'
 import {Accordion, AccordionItem} from './accordion'
 import {DropdownMenu, DropdownMenuItem} from './dropdown-menu'
+import './style/src/theme/index.scss';
 
 if (!window.requestAnimationFrame) {
   window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || setTimeout
