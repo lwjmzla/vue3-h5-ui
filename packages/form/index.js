@@ -1,5 +1,4 @@
-import ElForm from 'element-plus/lib/el-form'
-import ElFormItem from 'element-plus/lib/el-form-item'
+import { ElForm, ElFormItem } from 'element-plus'
 if (!ElForm.mixins) {
   ElForm.mixins = []
 }
